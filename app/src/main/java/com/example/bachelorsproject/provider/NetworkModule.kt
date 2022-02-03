@@ -1,6 +1,6 @@
 package com.example.bachelorsproject.provider
 
-import com.example.bachelorsproject.remote.retrofit.RecipeApiService
+import com.example.bachelorsproject.data.remote.retrofit.RecipeApiService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
