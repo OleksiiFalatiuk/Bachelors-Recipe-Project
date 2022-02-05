@@ -6,7 +6,7 @@ import com.example.bachelorsproject.model.TotalResults
 
 class RecipeRepositoryImpl(private val remote: RemoteDataSource): RecipeRepository {
 
-    override suspend fun loadRecipe(recipeName: String): TotalResults {
-        return remote.loadSome(recipeName)
+    override suspend fun loadRecipe(recipeName: String): List<Recipe> {
+        return remote.loadRecipe(recipeName)
     }
 }

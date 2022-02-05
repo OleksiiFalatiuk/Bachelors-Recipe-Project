@@ -14,7 +14,6 @@ import com.example.bachelorsproject.model.Recipe
 
 class RecipeListAdapter: ListAdapter<Recipe, RecipeListAdapter.ViewHolder>(DiffCallback()) {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(parent.context)

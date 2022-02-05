@@ -8,11 +8,14 @@ import com.example.bachelorsproject.data.remote.retrofit.RetrofitDataSource
 import com.example.bachelorsproject.provider.NetworkModule
 import com.example.bachelorsproject.provider.RecipeProvider
 import com.example.bachelorsproject.recipe.RecipeListFragment
+import kotlinx.serialization.ExperimentalSerializationApi
 
 class MainActivity : AppCompatActivity(), RecipeProvider {
 
     private val networkModule = NetworkModule()
+    @ExperimentalSerializationApi
     private val retrofitDataSource = RetrofitDataSource(networkModule.api)
+    @ExperimentalSerializationApi
     private val recipeRepository = RecipeRepositoryImpl(retrofitDataSource)
 
 
@@ -31,5 +34,6 @@ class MainActivity : AppCompatActivity(), RecipeProvider {
         }
     }
 
+    @ExperimentalSerializationApi
     override fun provideRecipe(): RecipeRepository = recipeRepository
 }

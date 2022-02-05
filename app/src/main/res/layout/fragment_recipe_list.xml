@@ -72,13 +72,13 @@
             android:hint="SomeText" />
 
         <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_recipe"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+            android:id="@+id/recycler_recipe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-        app:layout_constraintEnd_toStartOf="@+id/root_right_guideline"
-        app:layout_constraintStart_toEndOf="@+id/root_left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/tvTotalResult" />
+            app:layout_constraintEnd_toStartOf="@+id/root_right_guideline"
+            app:layout_constraintStart_toEndOf="@+id/root_left_guideline"
+            app:layout_constraintTop_toBottomOf="@id/tvTotalResult" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

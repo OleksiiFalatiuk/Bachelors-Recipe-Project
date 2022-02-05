@@ -45,7 +45,7 @@ class RecipeListFragment: Fragment() {
 
         view.findViewById<RecyclerView>(R.id.recycler_recipe).apply {
 
-            this.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+            this.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
             val adapter = RecipeListAdapter()
 

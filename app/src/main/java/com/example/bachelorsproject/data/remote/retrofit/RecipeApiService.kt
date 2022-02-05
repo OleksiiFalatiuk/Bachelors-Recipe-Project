@@ -9,6 +9,6 @@ import retrofit2.http.Query
 interface RecipeApiService {
     @GET("recipes/complexSearch?")
     suspend fun loadImageOfRecipe(
-        @Query("recipe_name") recipe_name: String?
+        @Query("query") recipe_name: String
     ): RecipeResponse
 }
