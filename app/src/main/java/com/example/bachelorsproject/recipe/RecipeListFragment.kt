@@ -1,5 +1,6 @@
 package com.example.bachelorsproject.recipe
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -30,6 +32,14 @@ class RecipeListFragment: Fragment() {
 
     private val scopeRecipe = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
+    private var listener: RecipeListItemClickListener? = null
+
+    override fun onAttach(context: Context) {
+        if (context is RecipeListItemClickListener){
+            listener = context
+        }
+        super.onAttach(context)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,9 +55,13 @@ class RecipeListFragment: Fragment() {
 
         view.findViewById<RecyclerView>(R.id.recycler_recipe).apply {
 
-            this.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+            this.layoutManager = GridLayoutManager(context, 2)
 
             val adapter = RecipeListAdapter()
+            //TODO() Заміна
+//            val adapter = RecipeListAdapter{ recipeId ->
+//                listener?.onRecipeSelected(recipeId)
+//            }
 
             this.adapter = adapter
         }
@@ -56,27 +70,30 @@ class RecipeListFragment: Fragment() {
             val word = edit.text.toString()
             viewRecipeModel.loadRecipe(word)
         }
-
-            viewRecipeModel.getRecipeLiveData.observe(viewLifecycleOwner, Observer {
-                if (it != null){
-                    Log.d("111",it.toString())
-                    bindUI(it)
+        scopeRecipe.launch {
+            viewRecipeModel.getRecipeLiveData.observe(viewLifecycleOwner, { recipeImage ->
+                if (recipeImage != null) {
+                    bindUI(recipeImage)
                 }
             })
+        }
 
 
     }
+
     private fun bindUI(recipe: List<Recipe>){
-//        updateRecipePhoto(recipe)
         val adapter = view?.findViewById<RecyclerView>(R.id.recycler_recipe)?.adapter as RecipeListAdapter
         adapter.submitList(recipe)
     }
 
+    override fun onDetach() {
+        listener = null
+        super.onDetach()
+    }
 
-//    private fun updateRecipePhoto(recipe: TotalResults){
-//        view?.findViewById<TextView>(R.id.tvTotalResult)?.text = recipe.totalResult.toString()
-//    }
-
+    interface RecipeListItemClickListener {
+        fun onRecipeSelected(recipeId: Int)
+    }
 
 
     companion object{

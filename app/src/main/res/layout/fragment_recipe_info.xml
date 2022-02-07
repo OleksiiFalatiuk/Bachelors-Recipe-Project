@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/root_left_guideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/root_right_guideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_end="16dp" />
+
+        <ImageView
+            android:id="@+id/imageRecipe"
+            android:layout_width="match_parent"
+            android:layout_height="298dp"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@tools:sample/avatars"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"/>
+
+        <TextView
+            android:id="@+id/recipe_name_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="254dp"
+            android:text="Pasta with Garlic, Scallions, Cauliflower &amp; Breadcrumbs"
+            android:textColor="@color/black"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/root_right_guideline"
+            app:layout_constraintStart_toEndOf="@+id/root_left_guideline"
+            app:layout_constraintTop_toTopOf="@+id/imageRecipe" />
+
+        <TextView
+            android:id="@+id/cover_of_summary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Summary"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/root_right_guideline"
+            app:layout_constraintStart_toEndOf="@+id/root_left_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/recipe_name_text" />
+
+        <TextView
+            android:id="@+id/story_of_summary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/summary"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/root_right_guideline"
+            app:layout_constraintStart_toEndOf="@+id/root_left_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/cover_of_summary" />
+
+        <TextView
+            android:id="@+id/ingredients"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Ingredients"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/root_right_guideline"
+            app:layout_constraintStart_toEndOf="@+id/root_left_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/story_of_summary" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_ingredients"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/root_right_guideline"
+            app:layout_constraintStart_toEndOf="@+id/root_left_guideline"
+            app:layout_constraintTop_toBottomOf="@id/ingredients" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

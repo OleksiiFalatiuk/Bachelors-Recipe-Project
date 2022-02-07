@@ -8,9 +8,10 @@ import com.example.bachelorsproject.data.remote.retrofit.RetrofitDataSource
 import com.example.bachelorsproject.provider.NetworkModule
 import com.example.bachelorsproject.provider.RecipeProvider
 import com.example.bachelorsproject.recipe.RecipeListFragment
+import com.example.bachelorsproject.recipeinfo.RecipeInfoListFragment
 import kotlinx.serialization.ExperimentalSerializationApi
 
-class MainActivity : AppCompatActivity(), RecipeProvider {
+class MainActivity : AppCompatActivity(), RecipeProvider, RecipeListFragment.RecipeListItemClickListener {
 
     private val networkModule = NetworkModule()
     @ExperimentalSerializationApi
@@ -34,6 +35,22 @@ class MainActivity : AppCompatActivity(), RecipeProvider {
         }
     }
 
+    override fun onRecipeSelected(recipeId: Int) {
+        toRecipeInfoFragment(recipeId)
+    }
+
+    private fun toRecipeInfoFragment(recipeId: Int){
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.flMain,
+             RecipeInfoListFragment.create(recipeId),
+                RecipeInfoListFragment::class.java.simpleName
+            )
+            .addToBackStack("trans:${RecipeInfoListFragment::class.java.simpleName}")
+            .commit()
+    }
+
+
     @ExperimentalSerializationApi
     override fun provideRecipe(): RecipeRepository = recipeRepository
+
 }
