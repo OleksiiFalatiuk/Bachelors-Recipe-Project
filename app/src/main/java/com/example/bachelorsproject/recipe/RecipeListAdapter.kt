@@ -30,7 +30,7 @@ class RecipeListAdapter: ListAdapter<Recipe, RecipeListAdapter.ViewHolder>(DiffC
         private val recipeImage: ImageView = itemView.findViewById(R.id.ivPhoto)
 
         fun bind(item: Recipe) {
-            Glide.with(itemView).load(item.imageOfRecipe).into(recipeImage)
+                Glide.with(itemView).load(item.imageOfRecipe).into(recipeImage)
         }
     }
 

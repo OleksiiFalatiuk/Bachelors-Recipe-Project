@@ -13,14 +13,14 @@ import retrofit2.HttpException
 
 class RecipeViewModel(private val repository: RecipeRepository) : ViewModel() {
 
-    private val _getRecipeLiveData = MutableLiveData<TotalResults>(null)
+    private val _getRecipeLiveData = MutableLiveData<List<Recipe>>(null)
 
-    val getRecipeLiveData: LiveData<TotalResults> = _getRecipeLiveData
+    val getRecipeLiveData: LiveData<List<Recipe>> = _getRecipeLiveData
 
     fun loadRecipe(recipeName: String) {
         viewModelScope.launch {
             try {
-                repository.loadRecipe(recipeName)
+                _getRecipeLiveData.value = repository.loadRecipe(recipeName)
             } catch (e: Exception) {
                 e.printStackTrace()
             }

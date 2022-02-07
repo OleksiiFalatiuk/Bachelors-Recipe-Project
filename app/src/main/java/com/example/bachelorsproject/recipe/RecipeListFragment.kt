@@ -57,25 +57,25 @@ class RecipeListFragment: Fragment() {
             viewRecipeModel.loadRecipe(word)
         }
 
-        scopeRecipe.launch {
             viewRecipeModel.getRecipeLiveData.observe(viewLifecycleOwner, Observer {
                 if (it != null){
-                    bindUI(view,it)
+                    Log.d("111",it.toString())
+                    bindUI(it)
                 }
             })
-        }
-
-    }
-    private fun bindUI(view: View, recipe: TotalResults){
-        updateRecipePhoto(recipe)
-        val adapter = view.findViewById<RecyclerView>(R.id.recycler_recipe).adapter as RecipeListAdapter
-        adapter.submitList(recipe.result)
-    }
 
 
-    private fun updateRecipePhoto(recipe: TotalResults){
-        view?.findViewById<TextView>(R.id.tvTotalResult)?.text = recipe.totalResult.toString()
     }
+    private fun bindUI(recipe: List<Recipe>){
+//        updateRecipePhoto(recipe)
+        val adapter = view?.findViewById<RecyclerView>(R.id.recycler_recipe)?.adapter as RecipeListAdapter
+        adapter.submitList(recipe)
+    }
+
+
+//    private fun updateRecipePhoto(recipe: TotalResults){
+//        view?.findViewById<TextView>(R.id.tvTotalResult)?.text = recipe.totalResult.toString()
+//    }
 
 
 
