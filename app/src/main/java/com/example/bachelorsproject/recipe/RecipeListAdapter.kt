@@ -31,7 +31,11 @@ class RecipeListAdapter(private val onClickRecipe: (recipeId: Int) -> Unit):
         private val recipeImage: ImageView = itemView.findViewById(R.id.ivPhoto)
 
         fun bind(item: Recipe,onClickRecipe: (recipeId: Int) -> Unit) {
-                Glide.with(itemView).load(item.imageOfRecipe).into(recipeImage)
+            Glide.with(itemView).load(item.imageOfRecipe).into(recipeImage)
+
+            recipeImage.setOnClickListener{
+                onClickRecipe(item.id)
+            }
         }
     }
 
