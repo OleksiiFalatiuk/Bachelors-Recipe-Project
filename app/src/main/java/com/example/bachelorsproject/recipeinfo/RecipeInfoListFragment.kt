@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.bachelorsproject.R
 
 class RecipeInfoListFragment: Fragment() {
@@ -18,6 +20,14 @@ class RecipeInfoListFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val recipeId = arguments?.getSerializable(PARAM_RECIPE_DATA) as? Int ?: return
+
+        view.findViewById<RecyclerView>(R.id.recycler_ingredients).apply {
+            this.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL,false)
+
+            this.adapter = RecipeInfoAdapter()
+
+            this.adapter = adapter
+        }
     }
 
     companion object {

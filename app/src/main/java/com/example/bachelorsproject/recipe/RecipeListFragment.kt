@@ -11,12 +11,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bachelorsproject.R
 import com.example.bachelorsproject.model.Recipe
-import com.example.bachelorsproject.model.TotalResults
 import com.example.bachelorsproject.provider.RecipeProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -57,11 +55,9 @@ class RecipeListFragment: Fragment() {
 
             this.layoutManager = GridLayoutManager(context, 2)
 
-            val adapter = RecipeListAdapter()
-            //TODO() Заміна
-//            val adapter = RecipeListAdapter{ recipeId ->
-//                listener?.onRecipeSelected(recipeId)
-//            }
+            val adapter = RecipeListAdapter{ recipeId ->
+                listener?.onRecipeSelected(recipeId)
+            }
 
             this.adapter = adapter
         }

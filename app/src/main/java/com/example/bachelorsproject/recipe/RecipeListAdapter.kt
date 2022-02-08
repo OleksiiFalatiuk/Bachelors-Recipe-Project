@@ -12,7 +12,8 @@ import com.bumptech.glide.Glide
 import com.example.bachelorsproject.R
 import com.example.bachelorsproject.model.Recipe
 
-class RecipeListAdapter: ListAdapter<Recipe, RecipeListAdapter.ViewHolder>(DiffCallback()) {
+class RecipeListAdapter(private val onClickRecipe: (recipeId: Int) -> Unit):
+    ListAdapter<Recipe, RecipeListAdapter.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -22,14 +23,14 @@ class RecipeListAdapter: ListAdapter<Recipe, RecipeListAdapter.ViewHolder>(DiffC
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item,onClickRecipe)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val recipeImage: ImageView = itemView.findViewById(R.id.ivPhoto)
 
-        fun bind(item: Recipe) {
+        fun bind(item: Recipe,onClickRecipe: (recipeId: Int) -> Unit) {
                 Glide.with(itemView).load(item.imageOfRecipe).into(recipeImage)
         }
     }
