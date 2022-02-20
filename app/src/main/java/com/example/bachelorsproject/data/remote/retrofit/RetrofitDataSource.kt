@@ -25,6 +25,7 @@ class RetrofitDataSource(private val api: RecipeApiService):RemoteDataSource {
             imageOfRecipeInfo = info.imageOfRecipeInfo,
             recipeNameInfo = info.titleOfRecipeInfo,
             summaryOfRecipeInfo = info.summaryOfRecipeInfo,
+            pricePerServing = info.pricePerServing,
             components = info.ingredients.map { component ->
                 Component(
                     componentId = component.id,

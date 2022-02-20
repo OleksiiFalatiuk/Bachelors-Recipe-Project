@@ -2,4 +2,6 @@
     <string name="app_name">Bachelors Project</string>
     <string name="summary">Pasta with Garlic, Scallions, Cauliflower &amp; Breadcrumbs might be just the main course you are searching for. This recipe makes 2 servings with 636 calories, 21g of protein, and 20g of fat each. For $1.83 per serving, this recipe covers 24% of your daily requirements of vitamins and minerals. From preparation to the plate, this recipe takes about 45 minutes. This recipe is liked by 209 foodies and cooks. If you have pasta, salt and pepper, cheese, and a few other ingredients on hand, you can make it. </string>
     <string name="info_ingredient">About 2 cups frozen cauliflower florets, thawed, cut into bite-sized pieces</string>
+    <string name="pasta_with_garlic_scallions_cauliflower_amp_breadcrumbs"><![CDATA[Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs]]></string>
+    <string name="price_d_uah">Price: %f UAH</string>
 </resources>

@@ -5,5 +5,6 @@ data class RecipeInfo(
     val imageOfRecipeInfo: String?,
     val recipeNameInfo: String,
     val summaryOfRecipeInfo: String,
+    val pricePerServing: Float,
     val components: List<Component>
 )

@@ -82,6 +82,10 @@ class RecipeListFragment: Fragment() {
         adapter.submitList(recipe)
     }
 
+    private fun showDialog(){
+
+    }
+
     override fun onDetach() {
         listener = null
         super.onDetach()
