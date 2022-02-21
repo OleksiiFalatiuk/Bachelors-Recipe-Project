@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="16dp">
 
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/root_left_guideline"
             android:layout_width="0dp"
@@ -35,6 +36,17 @@
             tools:srcCompat="@tools:sample/avatars"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription"/>
+
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="69dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:text="ADD"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.921"
+            app:layout_constraintStart_toStartOf="@+id/imageRecipe"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/recipe_name_text"
