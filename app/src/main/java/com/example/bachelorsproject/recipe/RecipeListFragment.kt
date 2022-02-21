@@ -22,9 +22,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class RecipeListFragment: Fragment() {
 
 
-//    private val viewRecipeModel: RecipeViewModel by viewModels{
-//        RecipeViewModelFactory((requireActivity() as RecipeProvider).provideRecipe())
-//    }
 
     private val viewRecipeModel by viewModel<RecipeViewModel>()
 

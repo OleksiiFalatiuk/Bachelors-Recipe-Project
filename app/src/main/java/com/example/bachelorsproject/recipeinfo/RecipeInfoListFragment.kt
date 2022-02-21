@@ -26,10 +26,6 @@ class RecipeInfoListFragment: Fragment() {
 
     private val scopeRecipeInfo = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
-//    private val viewRecipeInfoModel: RecipeInfoViewModel by viewModels{
-//        RecipeInfoViewModelFactory((requireActivity() as RecipeProvider).provideRecipe())
-//    }
-
     private val viewRecipeInfoModel by viewModel<RecipeInfoViewModel>()
 
     override fun onCreateView(

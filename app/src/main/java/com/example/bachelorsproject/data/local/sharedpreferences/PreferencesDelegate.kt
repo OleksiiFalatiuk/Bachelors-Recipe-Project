@@ -6,7 +6,7 @@ import kotlin.reflect.KProperty
 
 @Suppress("UNCHECKED_CAST")
 class PreferencesDelegate<TValue>(
-    val preferences: SharedPreferences,
+    private val preferences: SharedPreferences,
     private val name: String,
     private val defValue: TValue
 ) : ReadWriteProperty<Any?, TValue> {
