@@ -9,6 +9,6 @@ class RecipeInfoResponse(
     @SerialName("title") val titleOfRecipeInfo: String,
     @SerialName("image") val imageOfRecipeInfo: String?,
     @SerialName("summary") val summaryOfRecipeInfo: String,
-    @SerialName("pricePerServing") val pricePerServing: Float,
+    @SerialName("pricePerServing") val pricePerServing: Double?,
     @SerialName("extendedIngredients") val ingredients: List<ExtendedIngredientsResponse>
 )

@@ -63,6 +63,8 @@ class RecipeInfoListFragment: Fragment() {
     }
 
     private fun updateRecipeInfo(recipe: RecipeInfo){
+        val price = view?.findViewById<TextView>(R.id.tvPrice)
+
         val context = view?.context
         if (context != null) {
             view?.findViewById<ImageView>(R.id.imageRecipe)?.let {
@@ -73,7 +75,9 @@ class RecipeInfoListFragment: Fragment() {
         }
         view?.findViewById<TextView>(R.id.recipe_name_text)?.text = recipe.recipeNameInfo
         view?.findViewById<TextView>(R.id.story_of_summary)?.text = recipe.summaryOfRecipeInfo
-        view?.findViewById<TextView>(R.id.tvPrice)?.text = context?.getString(R.string.price_d_uah, recipe.pricePerServing)
+        if (context != null){
+            price?.text = context.getString(R.string.price_d_uah, recipe.pricePerServing)
+        }
     }
 
     companion object {

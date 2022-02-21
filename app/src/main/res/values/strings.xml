@@ -4,4 +4,6 @@
     <string name="info_ingredient">About 2 cups frozen cauliflower florets, thawed, cut into bite-sized pieces</string>
     <string name="pasta_with_garlic_scallions_cauliflower_amp_breadcrumbs"><![CDATA[Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs]]></string>
     <string name="price_d_uah">Price: %f UAH</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
 </resources>

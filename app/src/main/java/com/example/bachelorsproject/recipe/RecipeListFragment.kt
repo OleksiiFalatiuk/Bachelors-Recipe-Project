@@ -1,7 +1,10 @@
 package com.example.bachelorsproject.recipe
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +17,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bachelorsproject.R
+import com.example.bachelorsproject.data.local.sharedpreferences.SharedPref
 import com.example.bachelorsproject.model.Recipe
 import com.example.bachelorsproject.provider.RecipeProvider
 import kotlinx.coroutines.CoroutineScope
@@ -39,14 +43,28 @@ class RecipeListFragment: Fragment() {
         super.onAttach(context)
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.fragment_recipe_list,container,false)
+    ): View{
+        super.onCreateView(inflater, container, savedInstanceState)
+        val v = inflater.inflate(R.layout.fragment_recipe_list,container,false)
+
+        val shared = SharedPref(requireActivity().application)
+        if (shared.isFirst){
+            showDialog()
+            shared.isFirst = false
+        }
+
+
+        return v
+    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val edit = view.findViewById<EditText>(R.id.etForRecipe)
         val button = view.findViewById<Button>(R.id.btnClick)
@@ -83,6 +101,17 @@ class RecipeListFragment: Fragment() {
     }
 
     private fun showDialog(){
+
+        val builder = AlertDialog.Builder(context)
+        val inflater = layoutInflater
+        builder.setTitle("With EditText")
+        val dialogLayout = inflater.inflate(R.layout.layout_for_dialog, null)
+        val etLogin  = dialogLayout.findViewById<EditText>(R.id.etLogin)
+        val etPassword  = dialogLayout.findViewById<EditText>(R.id.etPassword)
+        builder.setView(dialogLayout)
+        builder.setPositiveButton("OK") { dialogInterface, i ->
+            Toast.makeText(context, "Welcome back " + etLogin.text.toString(), Toast.LENGTH_SHORT).show() }
+        builder.show()
 
     }
 

@@ -47,6 +47,7 @@ class RetrofitDataSource(private val api: RecipeApiService):RemoteDataSource {
         }
     }
 
+
     companion object{
         const val URL = "https://spoonacular.com/cdn/"
         const val SIZE = "ingredients_100x100/"
