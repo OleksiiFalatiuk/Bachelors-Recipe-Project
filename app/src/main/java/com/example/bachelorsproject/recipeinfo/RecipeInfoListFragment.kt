@@ -19,14 +19,18 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class RecipeInfoListFragment: Fragment() {
 
     private val scopeRecipeInfo = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
-    private val viewRecipeInfoModel: RecipeInfoViewModel by viewModels{
-        RecipeInfoViewModelFactory((requireActivity() as RecipeProvider).provideRecipe())
-    }
+//    private val viewRecipeInfoModel: RecipeInfoViewModel by viewModels{
+//        RecipeInfoViewModelFactory((requireActivity() as RecipeProvider).provideRecipe())
+//    }
+
+    private val viewRecipeInfoModel by viewModel<RecipeInfoViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

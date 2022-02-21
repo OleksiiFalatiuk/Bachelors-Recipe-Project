@@ -2,35 +2,31 @@ package com.example.bachelorsproject.recipe
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
-import android.text.InputType
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.bachelorsproject.R
 import com.example.bachelorsproject.data.local.sharedpreferences.SharedPref
 import com.example.bachelorsproject.model.Recipe
-import com.example.bachelorsproject.provider.RecipeProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RecipeListFragment: Fragment() {
 
 
-    private val viewRecipeModel: RecipeViewModel by viewModels{
-        RecipeViewModelFactory((requireActivity() as RecipeProvider).provideRecipe())
-    }
+//    private val viewRecipeModel: RecipeViewModel by viewModels{
+//        RecipeViewModelFactory((requireActivity() as RecipeProvider).provideRecipe())
+//    }
+
+    private val viewRecipeModel by viewModel<RecipeViewModel>()
 
     private val scopeRecipe = CoroutineScope(Dispatchers.Main + SupervisorJob())
 

@@ -11,13 +11,15 @@ import com.example.bachelorsproject.recipe.RecipeListFragment
 import com.example.bachelorsproject.recipeinfo.RecipeInfoListFragment
 import kotlinx.serialization.ExperimentalSerializationApi
 
-class MainActivity : AppCompatActivity(), RecipeProvider, RecipeListFragment.RecipeListItemClickListener {
+class MainActivity : AppCompatActivity(),
+//    RecipeProvider,
+    RecipeListFragment.RecipeListItemClickListener {
 
-    private val networkModule = NetworkModule()
-    @ExperimentalSerializationApi
-    private val retrofitDataSource = RetrofitDataSource(networkModule.api)
-    @ExperimentalSerializationApi
-    private val recipeRepository = RecipeRepositoryImpl(retrofitDataSource)
+//    private val networkModule = NetworkModule()
+//    @ExperimentalSerializationApi
+//    private val retrofitDataSource = RetrofitDataSource(networkModule.api)
+//    @ExperimentalSerializationApi
+//    private val recipeRepository = RecipeRepositoryImpl(retrofitDataSource)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +52,7 @@ class MainActivity : AppCompatActivity(), RecipeProvider, RecipeListFragment.Rec
     }
 
 
-    @ExperimentalSerializationApi
-    override fun provideRecipe(): RecipeRepository = recipeRepository
+//    @ExperimentalSerializationApi
+//    override fun provideRecipe(): RecipeRepository = recipeRepository
 
 }
