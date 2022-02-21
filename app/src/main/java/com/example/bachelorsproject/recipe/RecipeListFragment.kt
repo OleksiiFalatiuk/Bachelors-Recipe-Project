@@ -29,9 +29,15 @@ class RecipeListFragment: Fragment() {
 
     private var listener: RecipeListItemClickListener? = null
 
+    private var listenerForOrder: RecipeOrderClickListener? = null
+
     override fun onAttach(context: Context) {
         if (context is RecipeListItemClickListener){
             listener = context
+        }
+
+        if (context is RecipeOrderClickListener){
+            listenerForOrder = context
         }
         super.onAttach(context)
     }
@@ -61,6 +67,7 @@ class RecipeListFragment: Fragment() {
 
         val edit = view.findViewById<EditText>(R.id.etForRecipe)
         val button = view.findViewById<Button>(R.id.btnClick)
+        val buttonOrder = view.findViewById<Button>(R.id.btnClickToOrder)
 
         view.findViewById<RecyclerView>(R.id.recycler_recipe).apply {
 
@@ -85,6 +92,9 @@ class RecipeListFragment: Fragment() {
             })
         }
 
+        buttonOrder.setOnClickListener {
+            listenerForOrder?.onRecipeOrderSelected()
+        }
 
     }
 
@@ -110,11 +120,16 @@ class RecipeListFragment: Fragment() {
 
     override fun onDetach() {
         listener = null
+        listenerForOrder = null
         super.onDetach()
     }
 
     interface RecipeListItemClickListener {
         fun onRecipeSelected(recipeId: Int)
+    }
+
+    interface RecipeOrderClickListener {
+        fun onRecipeOrderSelected()
     }
 
 

@@ -9,10 +9,11 @@ import com.example.bachelorsproject.provider.NetworkModule
 import com.example.bachelorsproject.provider.RecipeProvider
 import com.example.bachelorsproject.recipe.RecipeListFragment
 import com.example.bachelorsproject.recipeinfo.RecipeInfoListFragment
+import com.example.bachelorsproject.recipeorder.RecipeOrderFragment
 import kotlinx.serialization.ExperimentalSerializationApi
 
 class MainActivity : AppCompatActivity(),
-    RecipeListFragment.RecipeListItemClickListener {
+    RecipeListFragment.RecipeListItemClickListener, RecipeListFragment.RecipeOrderClickListener {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +45,23 @@ class MainActivity : AppCompatActivity(),
             .addToBackStack("trans:${RecipeInfoListFragment::class.java.simpleName}")
             .commit()
     }
+
+    private fun toRecipeOrderFragment(){
+        supportFragmentManager.beginTransaction()
+            .replace(
+                R.id.flMain,
+                RecipeOrderFragment.create(),
+                RecipeOrderFragment::class.java.simpleName
+            )
+            .addToBackStack("trans:${RecipeOrderFragment::class.java.simpleName}")
+            .commit()
+    }
+
+    override fun onRecipeOrderSelected() {
+        toRecipeOrderFragment()
+    }
+
+
 
 
 }
