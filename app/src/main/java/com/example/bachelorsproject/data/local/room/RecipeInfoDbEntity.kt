@@ -9,5 +9,5 @@ data class RecipeInfoDbEntity(
     val id: Int,
     val image: String?,
     val recipeName: String,
-    val price: Double
+    val price: Double?
 )

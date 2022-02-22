@@ -10,9 +10,9 @@ interface RecipeInfoDao {
 
     @Transaction
     @Query("SELECT * FROM RecipeInfo")
-    fun getMovies(): List<RecipeInfoDbEntity>
+    fun getRecipeInfo(): List<RecipeInfoDbEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertMovies(movies: RecipeInfoDbEntity)
+    fun insertRecipeInfo(movies: RecipeInfoDbEntity)
 
 }
