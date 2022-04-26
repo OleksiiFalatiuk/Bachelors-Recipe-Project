@@ -1,11 +1,8 @@
 package com.example.bachelorsproject.data.local.room.dao
 
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Transaction
+import androidx.room.*
 import com.example.bachelorsproject.data.local.room.RecipeInfoDbEntity
-
+@Dao
 interface RecipeInfoDao {
 
     @Transaction

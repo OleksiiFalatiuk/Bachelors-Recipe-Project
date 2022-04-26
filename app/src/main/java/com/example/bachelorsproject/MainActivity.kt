@@ -10,10 +10,11 @@ import com.example.bachelorsproject.provider.RecipeProvider
 import com.example.bachelorsproject.recipe.RecipeListFragment
 import com.example.bachelorsproject.recipeinfo.RecipeInfoListFragment
 import com.example.bachelorsproject.recipeorder.RecipeOrderFragment
+import com.example.bachelorsproject.recipepay.RecipePayFragment
 import kotlinx.serialization.ExperimentalSerializationApi
 
 class MainActivity : AppCompatActivity(),
-    RecipeListFragment.RecipeListItemClickListener, RecipeListFragment.RecipeOrderClickListener {
+    RecipeListFragment.RecipeListItemClickListener, RecipeListFragment.RecipeOrderClickListener, RecipeOrderFragment.RecipePayClickListener {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,7 +62,20 @@ class MainActivity : AppCompatActivity(),
         toRecipeOrderFragment()
     }
 
+    private fun toRecipePayFragment(){
+        supportFragmentManager.beginTransaction()
+            .replace(
+                R.id.flMain,
+                RecipePayFragment.create(),
+                RecipePayFragment::class.java.simpleName
+            )
+            .addToBackStack("trans:${RecipePayFragment::class.java.simpleName}")
+            .commit()
+    }
 
+    override fun onRecipePaySelected() {
+        toRecipePayFragment()
+    }
 
 
 }
