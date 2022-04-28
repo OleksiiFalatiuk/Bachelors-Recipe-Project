@@ -107,7 +107,7 @@ class RecipeListFragment: Fragment() {
 
         val builder = AlertDialog.Builder(context)
         val inflater = layoutInflater
-        builder.setTitle("With EditText")
+        builder.setTitle("Please log in system")
         val dialogLayout = inflater.inflate(R.layout.layout_for_dialog, null)
         val etLogin  = dialogLayout.findViewById<EditText>(R.id.etLogin)
         val etPassword  = dialogLayout.findViewById<EditText>(R.id.etPassword)
